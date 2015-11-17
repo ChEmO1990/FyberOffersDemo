@@ -24,4 +24,5 @@ public class Constants {
     public static final String UID = "spiderman";
     public static final String APP_ID = "2070";
     public static final String LOCALE = "DE";
+    public static final String OFFER_TYPE = "112";
 }

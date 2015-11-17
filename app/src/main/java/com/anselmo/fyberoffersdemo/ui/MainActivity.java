@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btnGetOffers) void getAllOffers() {
-        if(TextUtils.isEmpty(editUid.getText().toString()) && TextUtils.isEmpty(editApiKey.getText().toString()) && TextUtils.isEmpty(editAppId.getText().toString()) ) {
+        if(TextUtils.isEmpty(editUid.getText().toString()) || TextUtils.isEmpty(editApiKey.getText().toString()) || TextUtils.isEmpty(editAppId.getText().toString()) ) {
             Toast.makeText(this, getString(R.string.message_parameters_empty), Toast.LENGTH_LONG).show();
         } else {
             Intent offersIntent = new Intent(this, OffersActivity.class);
@@ -72,5 +72,16 @@ public class MainActivity extends BaseActivity {
             offersIntent.putExtra(Constants.INTENT_EXTRA_PUB0, editPub0.getText().toString().trim());
             startActivity(offersIntent);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        checkDefault.setChecked(false);
+        editUid.setText("");
+        editApiKey.setText("");
+        editAppId.setText("");
+        editPub0.setText("");
+        editUid.requestFocus();
     }
 }

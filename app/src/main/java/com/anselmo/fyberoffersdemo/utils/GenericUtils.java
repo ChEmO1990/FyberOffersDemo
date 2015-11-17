@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.anselmo.fyberoffersdemo.net.DefaultParameter;
@@ -34,15 +35,28 @@ public class GenericUtils {
     }
 
     public static String getSHA1FromParameters( DefaultParameter parameters ) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        String concatenate = "appid=" + parameters.getAppid()                 + "&" +
-                             "device_id="         + parameters.getDevice_id() + "&" +
-                             "ip=" + parameters.getIp()                       + "&" +
-                             "locale=" + parameters.getLocale()               + "&" +
-                             "offer_types=" + parameters.getOffer_types()     + "&" +
-                             "pub0=" + parameters.getPub0()                   + "&" +
-                             "timestamp=" + parameters.getTimestamp()         + "&" +
-                             "uid=" + parameters.getUid()                     + "&" +
-                             Constants.API_KEY;
+        String concatenate = null;
+
+        if( TextUtils.isEmpty( parameters.getIp() ) ) {
+            concatenate = "appid=" + parameters.getAppid()           + "&" +
+                    "device_id="         + parameters.getDevice_id() + "&" +
+                    "locale=" + parameters.getLocale()               + "&" +
+                    "offer_types=" + parameters.getOffer_types()     + "&" +
+                    "pub0=" + parameters.getPub0()                   + "&" +
+                    "timestamp=" + parameters.getTimestamp()         + "&" +
+                    "uid=" + parameters.getUid()                     + "&" +
+                    parameters.getApiKey();
+        } else {
+            concatenate = "appid=" + parameters.getAppid()           + "&" +
+                    "device_id="         + parameters.getDevice_id() + "&" +
+                    "ip=" + parameters.getIp()                       + "&" +
+                    "locale=" + parameters.getLocale()               + "&" +
+                    "offer_types=" + parameters.getOffer_types()     + "&" +
+                    "pub0=" + parameters.getPub0()                   + "&" +
+                    "timestamp=" + parameters.getTimestamp()         + "&" +
+                    "uid=" + parameters.getUid()                     + "&" +
+                    parameters.getApiKey();
+        }
 
         Log.i("URL_SHA", concatenate);
 

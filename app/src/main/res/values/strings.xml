@@ -5,16 +5,17 @@
     <string name="parameters">Parameters</string>
     <string name="titleButtonGetOffers">Get all offers</string>
     <string name="activity_home">Home</string>
-
+    <string name="activity_offers">Offer List</string>
     <string name="title_parameters_default">Load default parameters(PDF)</string>
-    <string name="message_parameters_empty">You need to fill all fields before continue</string>
-
-
-
+    <string name="message_parameters_empty">You need to fill all mandatory fields before continue</string>
     <string name="title_uid">UID</string>
     <string name="title_api_key">API KEY</string>
     <string name="title_app_id">APP ID</string>
     <string name="title_pub0">PUB0</string>
+    <string name="message_try_again">Try Again</string>
+    <string name="no_connection">No Connection</string>
+    <string name="message_no_connection">No internet access available. Try again, please.</string>
+
 
 
 </resources>

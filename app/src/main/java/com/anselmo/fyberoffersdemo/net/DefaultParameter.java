@@ -14,10 +14,12 @@ public class DefaultParameter {
     private String timestamp;
     private String uid;
     private String hashkey;
+    private String apiKey;
+
 
     public DefaultParameter() {}
 
-    public DefaultParameter(String appid, String device_id, String ip, String locale, String offer_types, String pub0, String timestamp, String uid) {
+    public DefaultParameter(String appid, String device_id, String ip, String locale, String offer_types, String pub0, String timestamp, String uid, String hashkey, String apiKey) {
         this.appid = appid;
         this.device_id = device_id;
         this.ip = ip;
@@ -26,6 +28,8 @@ public class DefaultParameter {
         this.pub0 = pub0;
         this.timestamp = timestamp;
         this.uid = uid;
+        this.hashkey = hashkey;
+        this.apiKey = apiKey;
     }
 
     public String getAppid() {
@@ -98,5 +102,13 @@ public class DefaultParameter {
 
     public void setHashkey(String hashkey) {
         this.hashkey = hashkey;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }

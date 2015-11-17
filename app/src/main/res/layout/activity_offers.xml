@@ -1,14 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_actionbar" />
+    <include layout="@layout/toolbar_actionbar"/>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerOffers"
+    <com.github.ksoichiro.android.observablescrollview.ObservableRecyclerView
+        android:id="@+id/rvOffers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         />
+
+    <com.vlonjatg.progressactivity.ProgressActivity
+        xmlns:progressActivity="http://schemas.android.com/tools"
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        progressActivity:progressLoadingStateBackgroundColor="#FFFFFF"
+        progressActivity:progressEmptyStateBackgroundColor="#fbc02d"
+        progressActivity:progressEmptyStateContentTextColor="#FFFFFF"
+        progressActivity:progressEmptyStateTitleTextColor="#FFFFFF"
+        progressActivity:progressErrorStateBackgroundColor="@color/white"
+        progressActivity:progressErrorStateButtonTextColor="@color/colorPrimary"
+        progressActivity:progressErrorStateContentTextColor="@colorPrimary"
+        progressActivity:progressErrorStateTitleTextColor="@color/colorPrimary">
+    </com.vlonjatg.progressactivity.ProgressActivity>
+
 </FrameLayout>

@@ -29,4 +29,7 @@ dependencies {
 
     //A Java serialization library that can convert Java Objects into JSON and back.
     compile 'com.google.code.gson:gson:2.2.4'
+
+    //View "injection" library
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

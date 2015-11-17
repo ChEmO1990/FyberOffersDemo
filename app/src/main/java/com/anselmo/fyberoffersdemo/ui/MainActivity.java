@@ -2,10 +2,12 @@ package com.anselmo.fyberoffersdemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.anselmo.fyberoffersdemo.R;
 import com.anselmo.fyberoffersdemo.utils.Constants;
@@ -60,22 +62,15 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btnGetOffers) void getAllOffers() {
-
-        /**
-         * Params to be used
-         * format: json
-         * appid: Application ID, provided as simple data
-         * uid: User ID, provided as simple data
-         * device_id: use Android advertising identifier
-         * locale: provided as simple data
-         * ip: provided as simple data
-         * offer_types: 112
-         */
-        Intent offersIntent = new Intent(this, OffersActivity.class);
-        offersIntent.putExtra(Constants.INTENT_EXTRA_UID, editUid.getText().toString().trim());
-        offersIntent.putExtra(Constants.INTENT_EXTRA_API_KEY, editApiKey.getText().toString().trim());
-        offersIntent.putExtra(Constants.INTENT_EXTRA_APPID, editAppId.getText().toString().trim());
-        offersIntent.putExtra(Constants.INTENT_EXTRA_PUB0, editPub0.getText().toString().trim());
-        startActivity(offersIntent);
+        if(TextUtils.isEmpty(editUid.getText().toString()) && TextUtils.isEmpty(editApiKey.getText().toString()) && TextUtils.isEmpty(editAppId.getText().toString()) ) {
+            Toast.makeText(this, getString(R.string.message_parameters_empty), Toast.LENGTH_LONG).show();
+        } else {
+            Intent offersIntent = new Intent(this, OffersActivity.class);
+            offersIntent.putExtra(Constants.INTENT_EXTRA_UID, editUid.getText().toString().trim());
+            offersIntent.putExtra(Constants.INTENT_EXTRA_API_KEY, editApiKey.getText().toString().trim());
+            offersIntent.putExtra(Constants.INTENT_EXTRA_APPID, editAppId.getText().toString().trim());
+            offersIntent.putExtra(Constants.INTENT_EXTRA_PUB0, editPub0.getText().toString().trim());
+            startActivity(offersIntent);
+        }
     }
 }

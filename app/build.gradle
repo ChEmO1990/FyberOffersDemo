@@ -24,12 +24,23 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
 
+    compile 'com.android.support:design:23.1.1'
+
     //HTTP library that makes networking for Android apps easier and most importantly, faster.
     compile files('libs/volley.jar')
 
     //A Java serialization library that can convert Java Objects into JSON and back.
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.code.gson:gson:2.4'
 
     //View "injection" library
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    //RecyclerView
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+
+    //A powerful image downloading and caching library for Android
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //Fonts
+    compile 'com.vstechlab.easyfonts:easyfonts:1.0.0'
 }

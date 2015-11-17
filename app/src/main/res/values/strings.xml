@@ -15,7 +15,10 @@
     <string name="message_try_again">Try Again</string>
     <string name="no_connection">No Connection</string>
     <string name="message_no_connection">No internet access available. Try again, please.</string>
+    <string name="no_offers">No Offers</string>
+    <string name="message_no_offers">No offers at this time</string>
 
-
-
+    <string name="title_error">Upsss...</string>
+    <string name="message_error">An error occurred while trying to find deals.</string>
+    <string name="try_again">Try Again!</string>
 </resources>

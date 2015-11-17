@@ -40,6 +40,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        getToolbar().setTitle(getString(R.string.activity_home));
     }
 
     public void onCheckboxClicked(View view) {

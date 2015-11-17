@@ -73,18 +73,12 @@ public class OffersActivity extends ToolbarControlBaseActivity<ObservableRecycle
             //Get ip
             String currentIp = GenericUtils.getIP(this);
 
-            parameters.setIp(null);
-
-            /**
             //Check if the device have an valid ip
             if (!currentIp.equals("0.0.0.0")) {
                 parameters.setIp(GenericUtils.getIP(this));
             } else {
                 parameters.setIp(null);
             }
-             **/
-
-
 
             parameters.setLocale(Constants.LOCALE); //Default Example PDF
             parameters.setOffer_types(Constants.OFFER_TYPE); //Default Example PDF
@@ -126,12 +120,12 @@ public class OffersActivity extends ToolbarControlBaseActivity<ObservableRecycle
         return R.layout.activity_offers;
     }
 
-    private Response.Listener<JsonModelOffer> successListenerMiibos() {
+    private Response.Listener<JsonModelOffer> successListener() {
         return new Response.Listener<JsonModelOffer>() {
             @Override
             public void onResponse(JsonModelOffer response) {
                 if( response.getOffers().isEmpty() ) {
-                    progressView.showEmpty(getResources().getDrawable(R.mipmap.ic_error), "Titulo de vacio", "No offers avaliables.");
+                    progressView.showEmpty(getResources().getDrawable(R.mipmap.ic_empty), getString(R.string.no_offers), getString(R.string.message_no_offers));
                 } else {
                     items.addAll(response.getOffers());
                     adapter.notifyDataSetChanged();
@@ -141,15 +135,25 @@ public class OffersActivity extends ToolbarControlBaseActivity<ObservableRecycle
         };
     }
 
-    private Response.ErrorListener createErrorListener() {
+    private Response.ErrorListener errorListener() {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
 
-                progressView.showError(getResources().getDrawable(R.mipmap.ic_error), "Titulo error",
-                        "Ocurrio un error en la llamada",
-                        "Intenta de nuevo", errorClickListenerAgain);
+                String strError = null;
+
+                switch ( error.networkResponse.statusCode ) {
+                    case 400: strError = "400 Bad Request "; break;
+                    case 401: strError = "401 Unauthorized "; break;
+                    case 404: strError = "404 Not found "; break;
+                    case 500: strError = "500 Internal Server Error "; break;
+                    case 502: strError = "502 Bad Gateway "; break;
+                }
+
+                progressView.showError(getResources().getDrawable(R.mipmap.ic_error), getString(R.string.title_error) + strError,
+                        getString(R.string.message_error),
+                        getString(R.string.try_again), errorClickListenerAgain);
             }
         };
     }
@@ -165,8 +169,8 @@ public class OffersActivity extends ToolbarControlBaseActivity<ObservableRecycle
             GsonRequest<JsonModelOffer> request = new GsonRequest<>(Request.Method.GET,
                     EndPoint.getUrlOffers(parameters),
                     JsonModelOffer.class,
-                    successListenerMiibos(),
-                    createErrorListener(),
+                    successListener(),
+                    errorListener(),
                     null,
                     Request.Priority.IMMEDIATE);
             FyberApp.getInstance().addToRequestQueue(request);

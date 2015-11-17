@@ -8,4 +8,5 @@
     <color name="blue_grey">#778392</color>
     <color name="grey">#CACBCD</color>
     <color name="cyan">#2AADC5</color>
+    <color name="colorPressedButton">#303F9F</color>
 </resources>

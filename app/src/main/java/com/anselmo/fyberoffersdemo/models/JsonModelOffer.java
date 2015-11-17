@@ -300,7 +300,7 @@ public class JsonModelOffer {
             this.store_id = store_id;
         }
     }
-
+    
     //Getters and Setters
     public String getCode() {
         return code;

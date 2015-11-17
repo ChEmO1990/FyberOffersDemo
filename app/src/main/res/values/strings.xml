@@ -2,5 +2,18 @@
     <string name="app_name">FyberOffersDemo</string>
     <string name="action_github">GitHub</string>
     <string name="url_my_repo">https://github.com/ChEmO1990/FyberOffersDemo</string>
+    <string name="parameters">Parameters</string>
+    <string name="titleButtonGetOffers">Get all offers</string>
+    <string name="activity_home">Home</string>
+
+    <string name="title_parameters_default">Load default parameters(PDF)</string>
+
+
+
+    <string name="title_uid">UID</string>
+    <string name="title_api_key">API KEY</string>
+    <string name="title_app_id">APP ID</string>
+    <string name="title_pub0">PUB0</string>
+
 
 </resources>

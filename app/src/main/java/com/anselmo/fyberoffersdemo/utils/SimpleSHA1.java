@@ -10,21 +10,33 @@ import java.security.NoSuchAlgorithmException;
 
 public class SimpleSHA1 {
 
-    public static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = MessageDigest.getInstance("SHA-1");
-        md.update(text.getBytes("iso-8859-1"), 0, text.length());
-        byte[] sha1hash = md.digest();
-        return convertToHex(sha1hash);
+    public static String getSHA1(String str) {
+        MessageDigest digest = null;
+        byte[] input = null;
+
+        try {
+            digest = MessageDigest.getInstance("SHA-1");
+            digest.reset();
+            input = digest.digest(str.getBytes("UTF-8"));
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return convertToHex(input);
     }
 
     private static String convertToHex(byte[] data) {
-        StringBuilder buf = new StringBuilder();
-        for (byte b : data) {
-            int halfbyte = (b >>> 4) & 0x0F;
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < data.length; i++) {
+            int halfbyte = (data[i] >>> 4) & 0x0F;
             int two_halfs = 0;
             do {
-                buf.append((0 <= halfbyte) && (halfbyte <= 9) ? (char) ('0' + halfbyte) : (char) ('a' + (halfbyte - 10)));
-                halfbyte = b & 0x0F;
+                if ((0 <= halfbyte) && (halfbyte <= 9))
+                    buf.append((char) ('0' + halfbyte));
+                else
+                    buf.append((char) ('a' + (halfbyte - 10)));
+                halfbyte = data[i] & 0x0F;
             } while (two_halfs++ < 1);
         }
         return buf.toString();

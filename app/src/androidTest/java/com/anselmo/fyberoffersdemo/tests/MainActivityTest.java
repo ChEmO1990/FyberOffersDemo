@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.anselmo.fyberoffersdemo.R;
 import com.anselmo.fyberoffersdemo.ui.MainActivity;
 import com.anselmo.fyberoffersdemo.utils.Constants;
+import com.robotium.solo.Solo;
 
 /**
  * Created by Anselmo Hernández Bazaldúa on 11/18/15.

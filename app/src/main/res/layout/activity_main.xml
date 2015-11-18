@@ -29,24 +29,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/title_uid"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:ems="10"
                 android:id="@+id/editUid" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/title_api_key"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:ems="10"
                 android:id="@+id/editApiKey" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/title_app_id"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:ems="10"
                 android:id="@+id/editAppId" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/title_pub0"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:ems="10"
                 android:id="@+id/editPub0" />
         </LinearLayout>
 

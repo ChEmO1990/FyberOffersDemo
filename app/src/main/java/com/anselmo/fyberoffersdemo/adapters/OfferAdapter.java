@@ -73,9 +73,9 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
             teaser = (TextView) itemView.findViewById(R.id.item_teaser_offer);
             payout = (TextView) itemView.findViewById(R.id.item_payout_offer);
 
-            title.setTypeface(EasyFonts.robotoBold(context));
+            title.setTypeface(EasyFonts.robotoLight(context));
             teaser.setTypeface(EasyFonts.robotoLight(context));
-            payout.setTypeface(EasyFonts.robotoThin(context));
+            payout.setTypeface(EasyFonts.robotoBold(context));
 
             // Attach a click listener to the entire row view
             itemView.setOnClickListener(this);

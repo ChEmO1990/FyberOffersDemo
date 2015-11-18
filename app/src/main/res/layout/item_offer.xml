@@ -28,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
             android:textColor="@color/blue_grey"
             android:id="@+id/item_title_offer"
             android:layout_alignParentTop="true"
@@ -39,8 +38,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/grey"
             android:id="@+id/item_teaser_offer"
             android:layout_marginTop="5dp"
@@ -53,8 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/item_payout_offer"
             android:layout_gravity="right|left"
             android:textStyle="bold"

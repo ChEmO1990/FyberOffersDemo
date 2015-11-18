@@ -73,17 +73,13 @@ public class MainActivity extends BaseActivity {
             offersIntent.putExtra(Constants.INTENT_EXTRA_APPID, editAppId.getText().toString().trim());
             offersIntent.putExtra(Constants.INTENT_EXTRA_PUB0, editPub0.getText().toString().trim());
             startActivity(offersIntent);
-        }
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        checkDefault.setChecked(false);
-        editUid.setText("");
-        editApiKey.setText("");
-        editAppId.setText("");
-        editPub0.setText("");
-        editUid.requestFocus();
+            checkDefault.setChecked(false);
+            editUid.setText("");
+            editApiKey.setText("");
+            editAppId.setText("");
+            editPub0.setText("");
+            editUid.requestFocus();
+        }
     }
 }

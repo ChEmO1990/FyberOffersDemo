@@ -2,11 +2,8 @@ package com.anselmo.fyberoffersdemo.tests;
 
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.TouchUtils;
-import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.anselmo.fyberoffersdemo.R;
@@ -25,7 +22,6 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     private EditText editApiKey;
     private EditText editAppId;
     private EditText editPub0;
-    private CheckBox check;
     private Button btnGetOffers;
 
     public MainActivityTest() {
@@ -45,39 +41,13 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         editAppId = (EditText) solo.getView(R.id.editAppId);
         editPub0 = (EditText) solo.getView(R.id.editPub0);
         btnGetOffers = (Button) solo.getView(R.id.btnGetOffers);
-        check = (CheckBox) solo.getView(R.id.checkDefaultParams);
     }
 
     @SmallTest
-    public void test_check_default_parameters() {
-        TouchUtils.clickView(this, check); //Touch checkbox
-        assertEquals(Constants.UID, editUid.getText().toString());
-        assertEquals(Constants.API_KEY, editApiKey.getText().toString());
-        assertEquals(Constants.APP_ID, editAppId.getText().toString());
-    }
-
-    @SmallTest
-    public void test_uncheck_default_parameters() {
-        if( !solo.isCheckBoxChecked(0) ) {
-            assertEquals("", editUid.getText().toString());
-            assertEquals("", editApiKey.getText().toString());
-            assertEquals("", editAppId.getText().toString());
-        }
-    }
-
-    @MediumTest
-    public void test_values_get_offers() {
-        TouchUtils.clickView(this, btnGetOffers);
-
-        if( solo.isCheckBoxChecked(0)) {
-            assertEquals(Constants.UID, editUid.getText().toString());
-            assertEquals(Constants.API_KEY, editApiKey.getText().toString());
-            assertEquals(Constants.APP_ID, editAppId.getText().toString());
-        } else {
-            solo.waitForText( getActivity().getString(R.string.message_parameters_empty));
-            assertEquals("", editUid.getText().toString());
-            assertEquals("", editApiKey.getText().toString());
-            assertEquals("", editAppId.getText().toString());
-        }
+    public void test_getOffersByParametersDefault() {
+        solo.enterText(editUid, Constants.UID);
+        solo.enterText(editApiKey, Constants.API_KEY);
+        solo.enterText(editAppId, Constants.APP_ID);
+        solo.clickOnButton(0);
     }
 }

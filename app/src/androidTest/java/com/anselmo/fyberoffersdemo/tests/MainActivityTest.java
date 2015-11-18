@@ -1,9 +1,12 @@
 package com.anselmo.fyberoffersdemo.tests;
 
 
+import android.support.v7.widget.Toolbar;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.anselmo.fyberoffersdemo.R;
@@ -23,6 +26,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     private EditText editAppId;
     private EditText editPub0;
     private Button btnGetOffers;
+    private CheckBox check;
+    private Toolbar tool;
 
     public MainActivityTest() {
         super(MainActivity.class);
@@ -41,6 +46,26 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         editAppId = (EditText) solo.getView(R.id.editAppId);
         editPub0 = (EditText) solo.getView(R.id.editPub0);
         btnGetOffers = (Button) solo.getView(R.id.btnGetOffers);
+        check = (CheckBox) solo.getView(R.id.checkDefaultParams);
+        tool = (Toolbar) solo.getView(R.id.toolbar_actionbar);
+    }
+
+    public void test_PreConditions() {
+        assertNotNull("mFirstTestActivity is null", editUid);
+        assertNotNull("mFirstTestActivity is null", editApiKey);
+        assertNotNull("mFirstTestActivity is null", editAppId);
+        assertNotNull("mFirstTestActivity is null", editPub0);
+        assertNotNull("mFirstTestActivity is null", btnGetOffers);
+        assertNotNull("mFirstTestActivity is null", check);
+    }
+
+    public void test_PreToolbar() {
+        assertEquals("Message", getActivity().getString(R.string.activity_home), tool.getTitle().toString());
+    }
+
+    @SmallTest
+    public void test_AutoCompleteDefaultParameters() {
+        TouchUtils.clickView(this, check);
     }
 
     @SmallTest
@@ -49,5 +74,11 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         solo.enterText(editApiKey, Constants.API_KEY);
         solo.enterText(editAppId, Constants.APP_ID);
         solo.clickOnButton(0);
+        assertFalse(solo.waitForText(getActivity().getString(R.string.message_parameters_empty)));
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
     }
 }

@@ -75,7 +75,7 @@ public class OffersActivity extends ToolbarControlBaseActivity<ObservableRecycle
 
             //Check if the device have an valid ip
             if (!currentIp.equals("0.0.0.0")) {
-                parameters.setIp(GenericUtils.getIP(this));
+                parameters.setIp(currentIp);
             } else {
                 parameters.setIp(null);
             }

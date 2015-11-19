@@ -21,4 +21,8 @@ How to run the tests
 In Mac:
 command: ./gradlew tasks
 command: ./gradlew connectedAndroidTest
+
+In Windows:
+command: ./gradlew.bat tasks
+command: ./gradlew.bat connectedAndroidTest
 ```
